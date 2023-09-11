@@ -29,12 +29,6 @@ if (isset($sanpham)) {
                         <del class="text-gray-500 font-mono mx-2"><?php if (isset($giagoc)) echo number_format($sanpham['giagoc'], 0, ",", ".") ?>đ</del>
                         <!-- tính % giảm giá -->
                         <span class="text-[#388E3C] font-mono  max-w-[80px] bg-white"><?= intval(round((($giagoc - $giasale) / $giagoc) * 100)) ?>% OFF</span>
-                        <!-- đánh giá bao nhiêu sao
-                        <span class="ml-20"><i class="fa-solid fa-star" style="color: #f5db38;"></i>
-                            <i class="fa-solid fa-star" style="color: #f5db38;"></i>
-                            <i class="fa-solid fa-star" style="color: #f5db38;"></i>
-                            <i class="fa-regular fa-star" style="color: #f5db38;"></i>
-                        </span> -->
                     </span>
                     <!-- mo ta san pham -->
                     <div class="my-2">
@@ -247,8 +241,6 @@ if (isset($sanpham)) {
 
     const sizeRadios = document.querySelectorAll('input[name="size"]');
     const colorRadios = document.querySelectorAll('input[name="color"]');
-    console.log(sizeRadios);
-    console.log(colorRadios);
 
     function isOneChecked(radios) {
         for (let i = 0; i < radios.length; i++) {
@@ -262,7 +254,7 @@ if (isset($sanpham)) {
     function onFormSubmit(event) {
         if (!isOneChecked(sizeRadios) || !isOneChecked(colorRadios)) {
             event.preventDefault();
-            alert('Bạn phải chọn 1 một size và một màu sắc để có thể thêm vào giỏ hàng!');
+            alert('Bạn phải chọn 1 một size và một màu sắc!');
         }
     }
 

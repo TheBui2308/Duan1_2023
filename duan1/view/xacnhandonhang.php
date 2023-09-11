@@ -44,7 +44,12 @@ if (isset($_SESSION["taikhoan"])) {
                     <label for="">SĐT người nhận</label><br>
                     <input name="sdt" type="number" placeholder="Nhập vào SĐT người nhận..." value="<?= $sdt ?>" required><br><br>
                     <label for="">Email người nhận</label><br>
-                    <input name="email" type="email" placeholder="Nhập vào email người nhận..." value="<?= $email ?>" required><br><br>
+                    <input name="email" type="email" placeholder="Nhập vào email người nhận..." value="<?= $email ?>" required><br>
+                    <?php
+                    if (isset($thongbaotaikhoantontai)) {
+                        echo '<p class="text-red-500 text-sm">' . $thongbaotaikhoantontai . '</p>';
+                    }
+                    ?><br>
                     <label for="">Địa chỉ người nhận</label><br>
                     <textarea name="diachi" class="w-[80%] px-3 py-[10px] rounded-md border border-[#ccc] mt-[10px]" placeholder="Nhập vào địa chỉ người nhận..." required name="address" id="" cols="30" rows="4"><?= $diachi ?></textarea><br><br>
                     <button name="dongydathang" type="submit">Xác nhận</button>
@@ -101,6 +106,7 @@ if (isset($_SESSION["taikhoan"])) {
                         <td><img src="./upload/<?= $item[4] ?>" alt=""></td>
                         <td class="product-info">
                             <p class="product-name"><?= $item[1] ?></p>
+                            <span class="color-product">Đơn giá: <?= number_format($item[3], 0, ",", ".") ?>đ</span><br>
                             <span class="color-product">Màu: <?= $item[7] ?></span><br>
                             <span class="size-product">Size: <?= $item[6] ?></span>
                         </td>
@@ -159,14 +165,12 @@ if (isset($_SESSION["taikhoan"])) {
                         ?>
                     </span>
                 </div>
-                <!-- <a href="index.php?act=xacnhandonhang" class="submit-btn">Đặt hàng</a> -->
                 <?php
                 if ($tonggiohang >= 500000) {
                     echo '<p class="free-ship"><i class="fa-solid fa-circle-check"></i> Đơn hàng của bạn được miễn phí ship</p>';
                 } else {
                     echo '<p class="no-ship"><i class="fa-solid fa-triangle-exclamation"></i> Miễn phí ship với đơn hàng trên 500.000 VNĐ</p>';
                 }
-
                 ?>
             </div>
         </div>
